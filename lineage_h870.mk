@@ -24,17 +24,25 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from h870 device
 $(call inherit-product, device/lge/h870/device.mk)
 
+DEVICE_CODENAME := h870
+
 # Set those variables here to overwrite the inherited values.
 PRODUCT_DEVICE := h870
-PRODUCT_NAME := lineage_h870
+PRODUCT_NAME := lineage_$(DEVICE_CODENAME)
 PRODUCT_BRAND := lge
 PRODUCT_MODEL := LG-H870
 PRODUCT_MANUFACTURER := LGE
 
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE="lucye" \
-    PRODUCT_DEVICE="lucye" \
-    PRODUCT_NAME="lucye_global_com" \
-    PRIVATE_BUILD_DESC="lucye_global_com-user 8.0.0 OPR1.170623.032 192760018980d release-keys"
 
-BUILD_FINGERPRINT := "lge/lucye_global_com/lucye:8.0.0/OPR1.170623.032/192760018980d:user/release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BuildDesc="lucye_global_com-user 8.0.0 OPR1.170623.032 192760018980d release-keys" \
+    BuildFingerprint=lge/lucye_global_com/lucye:8.0.0/OPR1.170623.032/192760018980d:user/release-keys \
+    DeviceProduct=$(DEVICE_CODENAME)
+
+#PRODUCT_BUILD_PROP_OVERRIDES += \
+#    TARGET_DEVICE="lucye" \
+#    PRODUCT_DEVICE="lucye" \
+#    PRODUCT_NAME="lucye_global_com" \
+#    PRIVATE_BUILD_DESC="lucye_global_com-user 8.0.0 OPR1.170623.032 192760018980d release-keys"
+
+#BUILD_FINGERPRINT := "lge/lucye_global_com/lucye:8.0.0/OPR1.170623.032/192760018980d:user/release-keys"
